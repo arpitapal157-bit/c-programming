@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+
+class Shape {
+public:
+    // Area of Circle
+    float AREA(float r) {
+        return 3.14 * r * r;
+    }
+
+    // Area of Rectangle
+    float AREA(float l, float w) {
+        return l * w;
+    }
+
+    // Area of Triangle
+    float AREA(float b, float h, int) {
+        return 0.5 * b * h;
+    }
+};
+
+int main() {
+    Shape s;
+    float r, l, w, b, h;
+
+    cout << "Enter radius of circle: ";
+    cin >> r;
+
+    cout << "Enter length and width of rectangle: ";
+    cin >> l >> w;
+
+    cout << "Enter base and height of triangle: ";
+    cin >> b >> h;
+
+    cout << "Area of Circle = " << s.AREA(r) << endl;
+    cout << "Area of Rectangle = " << s.AREA(l, w) << endl;
+    cout << "Area of Triangle = " << s.AREA(b, h, 0) << endl;
+
+    return 0;
+}
