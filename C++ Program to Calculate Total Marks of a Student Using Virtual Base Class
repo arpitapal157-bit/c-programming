@@ -1,0 +1,72 @@
+#include <iostream>
+using namespace std;
+
+// Base class
+class Student {
+protected:
+    int rollno;
+    char name[30];
+
+public:
+    void getStudent() {
+        cout << "Enter Roll Number: ";
+        cin >> rollno;
+
+        cout << "Enter Name: ";
+        cin >> name;
+    }
+};
+
+// Derived class 1
+class Test : virtual public Student {
+protected:
+    int marks1, marks2;
+
+public:
+    void getMarks() {
+        cout << "Enter marks of two subjects: ";
+        cin >> marks1 >> marks2;
+    }
+};
+
+// Derived class 2
+class Sports : virtual public Student {
+protected:
+    int sportsMarks;
+
+public:
+    void getSports() {
+        cout << "Enter sports marks: ";
+        cin >> sportsMarks;
+    }
+};
+
+// Derived class
+class Result : public Test, public Sports {
+    int total;
+
+public:
+    void calculate() {
+        total = marks1 + marks2 + sportsMarks;
+    }
+
+    void display() {
+        cout << "\n----- STUDENT RESULT -----";
+        cout << "\nRoll Number: " << rollno;
+        cout << "\nName: " << name;
+        cout << "\nTotal Marks: " << total;
+    }
+};
+
+int main() {
+    Result r;
+
+    r.getStudent();
+    r.getMarks();
+    r.getSports();
+
+    r.calculate();
+    r.display();
+
+    return 0;
+}
