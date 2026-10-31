@@ -1,0 +1,85 @@
+#include <iostream>
+using namespace std;
+
+// Base class
+class Student {
+protected:
+    int rollno;
+    string name;
+
+public:
+    void getStudent() {
+        cout << "Enter Roll Number: ";
+        cin >> rollno;
+
+        cout << "Enter Student Name: ";
+        cin >> name;
+    }
+
+    void displayStudent() {
+        cout << "\nRoll Number: " << rollno;
+        cout << "\nStudent Name: " << name;
+    }
+};
+
+// Derived class
+class Exam : public Student {
+protected:
+    int marks[6];
+
+public:
+    void getMarks() {
+        cout << "\nEnter marks of six subjects:\n";
+
+        for (int i = 0; i < 6; i++) {
+            cout << "Subject " << i + 1 << ": ";
+            cin >> marks[i];
+        }
+    }
+
+    void displayMarks() {
+        cout << "\nMarks in six subjects:\n";
+
+        for (int i = 0; i < 6; i++) {
+            cout << marks[i] << " ";
+        }
+    }
+};
+
+// Derived class
+class Result : public Exam {
+    int total;
+    float percentage;
+
+public:
+    void calculate() {
+        total = 0;
+
+        for (int i = 0; i < 6; i++) {
+            total += marks[i];
+        }
+
+        percentage = total / 6.0;
+    }
+
+    void displayResult() {
+        displayStudent();
+        displayMarks();
+
+        cout << "\n\nTotal Marks = " << total;
+        cout << "\nPercentage = " << percentage << "%";
+    }
+};
+
+int main() {
+    Result r;
+
+    r.getStudent();
+    r.getMarks();
+    r.calculate();
+
+    cout << "\n\n----- STUDENT RESULT -----";
+    r.displayResult();
+
+    return 0;
+}
